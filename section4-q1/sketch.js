@@ -17,8 +17,17 @@ function setup(){
   // ここからが本番
   fill(0);
   const dx = width / scores.length;
-  let px, py; // 線を引くために一つ前の点を覚えておく変数
-  for(let i = 0; i < scores.length; i++){
-    // BLANK[1]
+  let px, py,r; // 線を引くために一つ前の点を覚えておく変数
+  px = dx*(0.5);
+  py = height-(height * scores[1]/ 100);
+  r = 10;
+  ellipse(px,py,r);
+
+  for(let i = 1; i < scores.length; i++){
+    const h = height * scores[i] / 100;
+    ellipse(dx*(i+0.5), height-h,10);
+    line(px,py,dx*(i+0.5),height-h,r);
+    px = dx*(i+0.5);
+    py = height-h,10;
   }
 }
